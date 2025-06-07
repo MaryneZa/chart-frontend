@@ -33,11 +33,15 @@ export default function HomePage() {
     }
 
     return (
-        <div className="relative p-6 text-black ">
-            <div className="flex mb-4 justify-end">
+        <div className="relative text-black ">
+            <div className="flex mb-4 px-10 py-5 justify-between items-center bg-blue-50">
+                <div>
+                    <p className="text-2xl font-medium">Timeline Chart</p>
+                </div>
+                <div>
                 <button
                     onClick={toggleDatePicker}
-                    className="flex items-center space-x-4 border-2 border-zinc-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-700"
+                    className="flex items-center space-x-4 border-2 border-zinc-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-700 bg-white"
                 >
                     <CalendarDays size={18} color="gray" />
                     <span>
@@ -48,7 +52,7 @@ export default function HomePage() {
                 </button>
 
                 {isDatePickerOpen && (
-                    <div className="absolute mt-10 z-50 bg-white p-4 border-2 border-gray-200 rounded-md shadow-md">
+                    <div className="absolute mt-10 right-5 z-50 bg-white p-4 border-2 border-gray-200 rounded-md shadow-md">
                         <DayPicker
                             mode="range"
                             selected={range}
@@ -72,15 +76,15 @@ export default function HomePage() {
 
                     </div>
                 )}
+                </div>
             </div>
 
             {
                 currentRange?.from && currentRange?.to && (
-                    <div>
+                    <div className="space-y-10 p-10">
                         <TimelineMessageChart start={format(currentRange?.from, 'yyyy-MM-dd')} end={format(currentRange?.to, 'yyyy-MM-dd')} />
                         <TimelineKeywordChart start={format(currentRange?.from, 'yyyy-MM-dd')} end={format(currentRange?.to, 'yyyy-MM-dd')} />
                         <TimelineEngagementChart start={format(currentRange?.from, 'yyyy-MM-dd')} end={format(currentRange?.to, 'yyyy-MM-dd')} />
-
                     </div>
 
                 )

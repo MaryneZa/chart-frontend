@@ -42,7 +42,7 @@ export default function TimelineEngagementChart({ start, end }: RangeDate) {
                             type: "column"
                         },
                         title: {
-                            text: "Daily Engagement Count"
+                            text: null
                         },
                         xAxis: {
                             type: "datetime"
@@ -106,7 +106,7 @@ export default function TimelineEngagementChart({ start, end }: RangeDate) {
                         type: "column"
                     },
                     title: {
-                        text: "Daily Engagement Count"
+                        text: null
 
                     },
                     xAxis: {
@@ -153,6 +153,11 @@ export default function TimelineEngagementChart({ start, end }: RangeDate) {
 
     if (isLoading) return <p>Loading chart...</p>;
 
-    return <HighchartsReact highcharts={Highcharts} options={options} />;
+    return (
+        <div>
+            <p className="text-2xl font-medium mb-8">Daily Engagement Count</p>
+            <HighchartsReact highcharts={Highcharts} options={options} />
+        </div>
+    )
 };
 

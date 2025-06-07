@@ -31,3 +31,9 @@ body {
   /* Add more CSS variables here. */
   color: #000000;
 }
+
+input {
+  @apply px-4 py-2 rounded-md border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-blue-500;
+  background-color: #ffffff; /* same as bg-zinc-100 if you're using Tailwind */
+  color: #000;
+}

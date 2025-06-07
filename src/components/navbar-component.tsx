@@ -8,7 +8,7 @@ interface NavBarComponentProps {
 
 export default function NavBarComponent({ href, link_text, onClick }: NavBarComponentProps) {
     return (
-        <div className="p-2 text-yellow-500 hover:bg-amber-100 rounded-full cursor-pointer" onClick={onClick}>
+        <div className="p-2 text-blue-600 hover:bg-blue-100 rounded-full cursor-pointer" onClick={onClick}>
             {href ?
                 (
                     <Link href={href}>

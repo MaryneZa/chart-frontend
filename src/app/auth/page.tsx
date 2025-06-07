@@ -50,7 +50,7 @@ export default function AuthPage() {
             await login(email, password);
             setLoading(false);
 
-            router.push('/home')
+            router.push('/dashboard')
 
 
         } catch (err: any) {
@@ -77,58 +77,79 @@ export default function AuthPage() {
     return (
         <div className="fixed inset-0 flex justify-center items-center text-black">
 
-            <div className="flex flex-col justify-center items-center bg-green-400 p-12">
+            <div className="flex flex-col space-y-3 justify-center items-center bg-gray-50 border-2 border-gray-100 rounded-md shadow-lg px-20 py-10">
+                <div className="flex flex-col space-y-1 justify-center items-center">
+                    <div className="text-2xl font-semibold">{isSignup ? "Signup" : "Login"}</div>
+                    <div className="text-sm text-gray-400">{isSignup ? "create your account" : "log in to your account"}</div>
+                </div>
+
                 {isSignup ?
                     <>
-                        <div>Sign Up</div>
-                        <form ref={formRef} onSubmit={handleSignupSubmit} className="flex flex-col space-y-2">
-                            <input
-                                type="email"
-                                name="email"
-                                className="bg-zinc-100"
-                                placeholder="Please enter your email"
-                                required
-                            />
-                            <input
-                                type="password"
-                                name="password"
-                                className="bg-zinc-100"
-                                placeholder="Please enter your password"
-                                required
-                            />
-                            <button type="submit" disabled={loading} className="cursor-pointer bg-blue-700 px-4 mx-4 py-2">{loading? 'Loading ...' : 'Sign up'}</button>
+                        <form ref={formRef} onSubmit={handleSignupSubmit} className="flex flex-col space-y-5">
+                            <div className="flex flex-col space-y-1">
+                                <p className="font-semibold text-sm">Email</p>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    className="bg-zinc-100"
+                                    placeholder="Please enter your email"
+                                    required
+                                />
+                            </div>
+                            <div className="flex flex-col space-y-1">
+                                <p className="font-semibold text-sm">Password</p>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    className="bg-zinc-100"
+                                    placeholder="Please enter your password"
+                                    required
+                                />
+                            </div>
+                            <button type="submit" disabled={loading} className="cursor-pointer bg-blue-700 px-4 py-2 rounded-md text-white">{loading ? 'Loading ...' : 'Sign up'}</button>
+
                             {errorMessage && <p className="text-red-600">{errorMessage}</p>}
                         </form>
                     </> :
                     <>
-                        <div>Log In</div>
-                        <form ref={formRef} action="" onSubmit={handleLoginSubmit} className="flex flex-col space-y-2">
-                            <input
-                                type="email"
-                                name="email"
-                                className="bg-zinc-100"
-                                placeholder="Please enter your email"
-                                required
-                            />
-                            <input
-                                type="password"
-                                name="password"
-                                className="bg-zinc-100"
-                                placeholder="Please enter your password"
-                                required
-                            />
-                            <button type="submit" disabled={loading} className="cursor-pointer bg-blue-700 px-4 mx-4 py-2">{loading? 'Loading ...' : 'Sign in'}</button>
+                        <form ref={formRef} action="" onSubmit={handleLoginSubmit} className="flex flex-col space-y-5">
+                            <div className="flex flex-col space-y-1">
+                                <p className="font-semibold text-sm">Email</p>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    className="bg-zinc-100"
+                                    placeholder="Please enter your email"
+                                    required
+                                />
+                            </div>
+                            <div className="flex flex-col space-y-1">
+                                <p className="font-semibold text-sm">Password</p>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    className="bg-zinc-100"
+                                    placeholder="Please enter your password"
+                                    required
+                                />
+                            </div>
+                            <button type="submit" disabled={loading} className="cursor-pointer bg-blue-700 px-4 py-2 rounded-md text-white">{loading ? 'Loading ...' : 'Sign in'}</button>
+
                             {errorMessage && <p className="text-red-600">{errorMessage}</p>}
                         </form>
                     </>
                 }
-                <div className="text-sm text-center">
-                    <p>
+                <div className="flex text-sm text-center text-gray-400 space-x-2">
+                    <div>
                         {isSignup ? "Already have an account?" : "Don't have an account?"}
-                        <button onClick={isSignup ? handleLogin : handleSignup} className="ml-2 text-blue-700 font-semibold">
+                    </div>
+                    <div>
+
+                        <button onClick={isSignup ? handleLogin : handleSignup} className="text-blue-700 hover:underline">
                             {isSignup ? "Log in" : "Sign up"}
                         </button>
-                    </p>
+                    </div>
+
                 </div>
             </div>
         </div>

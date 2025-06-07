@@ -65,7 +65,7 @@ export default function TimelineMessageChart({ start, end }: RangeDate) {
                         type: "line",
                     },
                     title: {
-                        text: "Daily Message Count",
+                        text: null,
                     },
                     xAxis: {
                         type: "datetime",
@@ -88,7 +88,7 @@ export default function TimelineMessageChart({ start, end }: RangeDate) {
             } catch (err) {
                 console.error("Failed to load data:", err);
                 setOptions({
-                    title: { text: "No Data Available" },
+                    title: { text: null },
                     series: [],
                 });
             } finally {
@@ -101,5 +101,10 @@ export default function TimelineMessageChart({ start, end }: RangeDate) {
 
     if (isLoading) return <p>Loading chart...</p>;
 
-    return <HighchartsReact highcharts={Highcharts} options={options} />;
+    return (
+        <div>
+            <p className="text-2xl font-medium mb-8">Daily Message Count</p>
+            <HighchartsReact highcharts={Highcharts} options={options} />
+        </div>
+    )
 }

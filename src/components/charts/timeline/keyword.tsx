@@ -55,7 +55,7 @@ export default function TimelineKeywordChart({ start, end }: RangeDate) {
                             type: "line"
                         },
                         title: {
-                            text: "Daily Keyword Count"
+                            text: null
                         },
                         xAxis: {
                             type: "datetime"
@@ -105,7 +105,7 @@ export default function TimelineKeywordChart({ start, end }: RangeDate) {
                         type: "line",
                     },
                     title: {
-                        text: "Daily Keyword Count",
+                        text: null,
                     },
                     xAxis: {
                         type: "datetime",
@@ -134,5 +134,10 @@ export default function TimelineKeywordChart({ start, end }: RangeDate) {
 
     if (isLoading) return <p>Loading chart...</p>;
 
-    return <HighchartsReact highcharts={Highcharts} options={options} />;
+    return (
+        <div>
+            <p className="text-2xl font-medium mb-8">Daily Keyword Count</p>
+            <HighchartsReact highcharts={Highcharts} options={options} />
+        </div>
+    )
 }
